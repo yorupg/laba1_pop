@@ -1,6 +1,7 @@
+from toolkit.errors import DIVISION_BY_ZERO
 from toolkit.tokenizator import tokenizator
 from toolkit.validator import validator
-from toolkit.errors import (DIVISION_BY_ZERO)
+
 
 def calculator(expr:str) -> float:
     """ считает значение выражения """
@@ -11,8 +12,10 @@ def calculator(expr:str) -> float:
     
     if code == -2 and len(numbers) == 1:
         return float(numbers[0])
+    
     if code != 0:
         return code
+    
     symbol = 0
     while symbol < len(symbols):
         if symbols[symbol] == '*':

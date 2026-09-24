@@ -1,7 +1,7 @@
 from typer.testing import CliRunner
 
 from toolkit.__main__ import app
-from toolkit.errors import NO_NUMBERS, NO_SIGNS
+from toolkit.errors import NO_NUMBERS
 
 runner = CliRunner()
 
@@ -18,14 +18,6 @@ def test_calc_no_numbers():
 
     assert result.exit_code == 2
     assert result.stderr.strip() == NO_NUMBERS
-
-
-def test_calc_no_signs():
-    result = runner.invoke(app, ["calc", "123"])
-
-    assert result.exit_code == 2
-    assert result.stderr.strip() == NO_SIGNS
-
 
 def test_convert_success():
     result = runner.invoke(

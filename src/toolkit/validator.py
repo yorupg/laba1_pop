@@ -39,7 +39,7 @@ def validator(expr: str) -> bool:
     if count_points != None: 
         return TOO_MANY_POINTS
     
-    if expr[-1] in '+-*/' or expr[0] in '*/' and len(numbers)>0:
+    if (expr[-1] in '+-*/' or expr[0] in '*/') and len(numbers)>0:
             return INPUT_ERROR
         
     return True

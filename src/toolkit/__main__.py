@@ -2,7 +2,7 @@ import typer
 
 from toolkit.calculator import calculator
 from toolkit.converter import converter
-from toolkit.errors import NO_NUMBERS, NO_SIGNS, INPUT_ERROR 
+from toolkit.errors import INPUT_ERROR, NO_NUMBERS, NO_SIGNS
 
 app = typer.Typer()
 

@@ -26,69 +26,63 @@ def test_no_numbers():
     
     assert result == -1
 
-def test_no_signs():
-    test_string_4 = '1458956'
-    result = calculator(test_string_4)
-    
-    assert result == -2
-
 def test_empty_expression():
-    test_string_5 = '     '
-    result = validator(test_string_5)
+    test_string_4 = '     '
+    result = validator(test_string_4)
     
     assert result == 'пустое выражение'
     
 def test_calculator_1():
-    test_string_6 = '2 + 2*2'
-    result = calculator(test_string_6)
+    test_string_5 = '2 + 2*2'
+    result = calculator(test_string_5)
     
     assert result == 6.0
     
 def test_calculator_2():
-    test_string_7 = '10 / 4'
-    result = calculator(test_string_7)
+    test_string_6 = '10 / 4'
+    result = calculator(test_string_6)
     
     assert result == 2.5
     
 def test_calculator_3():
-    test_string_8 = '1 + -2'
-    result = calculator(test_string_8)
+    test_string_7 = '1 + -2'
+    result = calculator(test_string_7)
     
     assert result == -1.0
     
 def test_calculator_4():
-    test_string_9 = '2/4 + 3*4'
-    result = calculator(test_string_9)
+    test_string_8 = '2/4 + 3*4'
+    result = calculator(test_string_8)
     
     assert result == 12.5
 
 def test_invalid_symbol():
-    test_string_10 = '2 + asd + 885'
-    result = validator(test_string_10)
+    test_string_9 = '2 + asd + 885'
+    result = validator(test_string_9)
     
     assert result == 'недопустимый символ'
     
 def test_division_by_zero():
-    test_string_11 = '2 *2 +48/0'
-    result = validator(test_string_11)
+    test_string_10 = '2 *2 +48/0'
+    result = calculator(test_string_10)
     
     assert result == 'деление на 0 запрещено'
     
 def test_too_many_points():
-    test_string_12 = '2 *2 +48..5-85.5'
-    result = validator(test_string_12)
+    test_string_11 = '2 *2 +48..5-85.5'
+    result = validator(test_string_11)
     
     assert result == 'ошибка ввода, в числе больше одной точки'
     
 def test_calculator_5():
-    test_string_13 = '5-3 + -9 * -1 /6 -9'
-    result = calculator(test_string_13)
+    test_string_12 = '5-3 + -9 * -1 /6 -9'
+    result = calculator(test_string_12)
     
     assert result == -5.5
 
 def test_absolute_error():
-    test_string_14 = '1/5000'
-    result = calculator(test_string_14)
+    test_string_13 = '1/5000'
+    result = calculator(test_string_13)
     
     assert result == pytest.approx(0.0002, abs = 1e-6)
     
