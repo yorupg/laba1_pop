@@ -9,17 +9,19 @@ app = typer.Typer()
 @app.command(context_settings={"ignore_unknown_options": True})
 def calc(expr: str = typer.Argument(..., help="введите арифметическое выражение")):
     result = calculator(expr)
-    if result == -1:
+    """ Проверяем, что result — это код ошибки (тип int), а не результат вычисления (тип float) """
+    
+    if isinstance(result, int) and result == -1:
         typer.echo(NO_NUMBERS, err=True)
         raise typer.Exit(code=2)
 
-    elif result == -2:
+    elif isinstance(result, int) and result == -2:
         typer.echo(NO_SIGNS, err=True)
         raise typer.Exit(code=2)
-    
-    elif result == -3:
-            typer.echo(INPUT_ERROR, err=True)
-            raise typer.Exit(code=2)
+
+    elif isinstance(result, int) and result == -3:
+        typer.echo(INPUT_ERROR, err=True)
+        raise typer.Exit(code=2)
 
     else:
         typer.echo(result)
@@ -27,6 +29,10 @@ def calc(expr: str = typer.Argument(..., help="введите арифметич
 @app.command(context_settings={"ignore_unknown_options": True})
 def convert(
     value: float = typer.Argument(..., help="введите значение, которое хотите конвертировать"),
+<<<<<<< HEAD
+=======
+                                                       
+>>>>>>> c6eeab3 ( absolutely final)
     from_: str = typer.Option(..., "--from", help="введите исходную единицу"),
     to: str = typer.Option(..., "--to", help="введите целевую единицу")):
     result = converter([value, from_, to])
