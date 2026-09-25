@@ -24,7 +24,7 @@ def test_no_numbers():
     test_string_3 = '++-+-'
     result = calculator(test_string_3)
     
-    assert result == -1
+    assert result == -1    
 
 def test_empty_expression():
     test_string_4 = '     '

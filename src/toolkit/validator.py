@@ -20,10 +20,12 @@ def validator(expr: str) -> bool:
         return MISSING_OPERAND
     
     expr = expr.replace(' ', '')
+    """ удаляю все пробелы и проверяю пустое ли выражение """
     if expr == '': 
         return EMPTY_EXPRESSION
     
-    if '**' in expr or '//' in expr or '+*' in expr or '-*' in expr or '+/' in expr or '-/' in expr:
+    if '**' in expr or '//' in expr or '+*' in expr or '-*' in expr or '+/' in expr \
+        or '-/' in expr or '*/' in expr or '/*' in expr:
         return DOUBLE_OPERATOR
     
     numbers = tokenizator(expr)[0]
@@ -32,15 +34,21 @@ def validator(expr: str) -> bool:
         return DOUBLE_OPERATOR   
     
     symbols_re = re.search(correct_symbols_re, expr)
+    """ проверяю есть ли недопустимые символы"""
     if symbols_re != None:
         return INVALID_SYMBOL    
     
     count_points = re.search(count_points_re, expr)
+    """ считаю количество точек в числе """
     if count_points != None: 
         return TOO_MANY_POINTS
     
     if (expr[-1] in '+-*/' or expr[0] in '*/') and len(numbers)>0:
             return INPUT_ERROR
+    
+    if (expr[:2] == "--" or expr[:2] == "++" or expr[:2] == "+-" or expr[:2] == "-+" ) and len(numbers)>0:
+        """ проверяю не начинается ли выражение с нескольких операторов"""
+        return INPUT_ERROR
         
     return True
     

@@ -17,6 +17,7 @@ def tokenizator(expr: str):
         float_digit = float(digit)
         number = digit.lstrip("+-")
         if len(number) > 1 and number[0] == "0" and number[1] != ".":
+            """ проверяю наличие чисел с незначащими нулями """
             return ([], [], -3)
         float_digits.append(float_digit)           
 
@@ -27,6 +28,6 @@ def tokenizator(expr: str):
         """проверяет есть ли в выражении знаки """
         return (float_digits, [], -2)
     for (sign) in signs_re: 
-         signs.append(sign) # noqa: PERF402
+        signs.append(sign) # noqa: PERF402
     
     return (float_digits, signs, 0)

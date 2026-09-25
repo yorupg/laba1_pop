@@ -18,6 +18,7 @@ def convert(value, from_unit, target_unit):
     """" конвертация """
     match category:
         case "massa":
+            """ работаю с переводом единиц массы """
             if value>=0:
                 if from_unit=='kg' and target_unit=='g': return f"{value * 1000} {target_unit}"
                 if from_unit=='g' and target_unit=='kg': return f"{value / 1000} {target_unit}"
@@ -27,6 +28,7 @@ def convert(value, from_unit, target_unit):
         case "dlina":
             temp = value
             if value>=0:
+                """ работаю с переводом единиц длины """
                 if from_unit == 'mm': temp/=1000
                 if from_unit=='cm': temp/=100
                 if from_unit=='km': temp *=1000
@@ -37,6 +39,7 @@ def convert(value, from_unit, target_unit):
             else: 
                 return  'неверное числовое значение'
         case "temperatura":
+            """ работаю с переводом единиц температуры """
             temp = 0
             if from_unit=='c': temp=value
             if from_unit=='k': temp=value - ABSOLUTE_ZERO_IN_CELSIUS

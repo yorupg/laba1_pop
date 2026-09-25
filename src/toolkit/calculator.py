@@ -7,16 +7,19 @@ def calculator(expr:str) -> float:
     """ считает значение выражения """
     is_valid = validator(expr)
     if is_valid != True:
+        """ проверяю прошло ли выражение проверку валидатора"""
         return is_valid
     numbers, symbols, code = tokenizator(expr)
     
     if code == -2 and len(numbers) == 1:
+        """" если пользователь ввёл только одно число возвращаю ему это же число"""
         return float(numbers[0])
     
     if code != 0:
         return code
     
     symbol = 0
+    """ выполняю действия с приоритетными операторами (* и /) """
     while symbol < len(symbols):
         if symbols[symbol] == '*':
             result = numbers[symbol] * numbers[symbol+1]
@@ -36,6 +39,7 @@ def calculator(expr:str) -> float:
             symbol += 1 
                 
     symbol = 0  
+    """ выполняю действия с + и - """
     while symbol < len(symbols):                      
         if symbols[symbol] == '+':
                     result = numbers[symbol] + numbers[symbol+1]

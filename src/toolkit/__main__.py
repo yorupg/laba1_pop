@@ -22,7 +22,7 @@ def calc(expr: str = typer.Argument(..., help="введите арифметич
             raise typer.Exit(code=2)
 
     else:
-        print(result)
+        typer.echo(result)
 
 @app.command(context_settings={"ignore_unknown_options": True})
 def convert(
@@ -45,7 +45,7 @@ def convert(
         typer.echo(result, err=True)
         raise typer.Exit(code=2)
     
-    print(result)
+    typer.echo(result)
 
 
 if __name__ == "__main__":

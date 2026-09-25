@@ -59,9 +59,9 @@ def test_wrong_category_2():
     assert result == 'данный тип не поддерживается'   
 
 def test_absolute_error():
-    test_string_10 = [0, 'c', 'k']
+    test_string_10 = [52, 'k', 'c']
     result = converter(test_string_10)
     
-    assert float(result[:-2]) == pytest.approx(273.15, abs = 1e-6)
+    assert float(result[:-2]) == pytest.approx(-221.15, abs = 1e-6)
 
     
