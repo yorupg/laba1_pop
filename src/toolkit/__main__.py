@@ -27,11 +27,6 @@ def calc(expr: str = typer.Argument(..., help="введите арифметич
 @app.command(context_settings={"ignore_unknown_options": True})
 def convert(
     value: float = typer.Argument(..., help="введите значение, которое хотите конвертировать"),
-                                                         # если подавать отрицательное число, то будет ошибка, тк это будет восприниматься опцией.
-                                                         # value: int = typer.Option(..., "--value", help="значение") так бы работало, но нарушало условие задания
-                                                         # тк  ввод требует именно python -m toolkit convert, а не python -m toolkit convert --value
-                                                         # прописала @app.command(context_settings={"ignore_unknown_options": True}), 
-                                                         # чтобы эта ошибка игнорировалась 
     from_: str = typer.Option(..., "--from", help="введите исходную единицу"),
     to: str = typer.Option(..., "--to", help="введите целевую единицу")):
     result = converter([value, from_, to])
