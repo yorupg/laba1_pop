@@ -1,4 +1,5 @@
 from toolkit.constants import DISTANCE_METRICS, MASS_METRICS, TEMPERATURE_METRICS
+from toolkit.errors import BELOW_ZERO, INCORRECT_DATA, WRONG_CATEGORY, WRONG_VALUE
 
 ABSOLUTE_ZERO_IN_CELSIUS = 273.15
 
@@ -24,7 +25,7 @@ def convert(value, from_unit, target_unit):
                 if from_unit=='g' and target_unit=='kg': return f"{value / 1000} {target_unit}"
                 if from_unit==target_unit: return f"{value} {target_unit}"
             else: 
-               return 'неверное числовое значение'
+               return WRONG_VALUE 
         case "dlina":
             temp = value
             if value>=0:
@@ -37,7 +38,7 @@ def convert(value, from_unit, target_unit):
                 if target_unit=='cm': return f"{temp * 100} {target_unit}"
                 if target_unit=='km': return f"{temp / 1000} {target_unit}"
             else: 
-                return  'неверное числовое значение'
+                return  WRONG_VALUE 
         case "temperatura":
             """ работаю с переводом единиц температуры """
             temp = 0
@@ -48,10 +49,10 @@ def convert(value, from_unit, target_unit):
                 if target_unit=='c': return f"{temp} {target_unit}"
                 if target_unit=='k': return f"{temp + ABSOLUTE_ZERO_IN_CELSIUS} {target_unit}"
                 if target_unit=='f': return f"{from_c_to_f(temp)} {target_unit}"
-            else: return 'ниже абсолютного нуля'
+            else: return BELOW_ZERO 
 
 def converter(expr: list) -> float:
-    if len(expr)!=3: return 'ошибка, введено недостаточно данных'
+    if len(expr)!=3: return INCORRECT_DATA
     """ проверяет точно ли передано 3 аргумента """
     value = float(expr[0])
     input_metric = expr[1].lower()
