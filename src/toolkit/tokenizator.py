@@ -4,7 +4,7 @@ import re
 def tokenizator(expr: str):
     expr = expr.replace(' ' , '')
     """ стирает пробелы, чтобы не учитывать их"""
-    digit_re = r"(?:^|(?<=[*/+^-]))(?P<digit1>[+-]?(?:\d+(?:\.\d*)?|\.\d+))|(?P<digit2>(?:\d+(?:\.\d*)?|\.\d+))"
+    digit_re = r"(?:^|(?<=[*/+-]))(?P<digit1>[+-]?(?:\d+(?:\.\d*)?|\.\d+))|(?P<digit2>(?:\d+(?:\.\d*)?|\.\d+))"
 
     float_digits = []
     digits = re.findall(digit_re, expr)
